@@ -45,6 +45,8 @@ public class UsersService {
         found.setEmail(newUser.getEmail());
         found.setPassword(newUser.getPassword());
         return this.userRepository.save(found);
-
+   }
+   public User findByEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow(() -> new NotFoundException("Email " + email + " not found"));
    }
 }

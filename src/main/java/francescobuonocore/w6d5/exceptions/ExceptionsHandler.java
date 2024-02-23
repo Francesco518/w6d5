@@ -24,4 +24,9 @@ public class ExceptionsHandler {
     public ErrorsPayload messageInternalServerError(Exception e) {
         return new ErrorsPayload(e.getMessage());
     }
+    @ExceptionHandler(UnauthorizedException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorsPayload messageUnauthorized(UnauthorizedException e) {
+        return new ErrorsPayload(e.getMessage());
+    }
 }

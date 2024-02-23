@@ -25,11 +25,7 @@ public class UsersController {
     public User findById(@PathVariable int userId) {
         return usersService.findById(userId);
     }
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public User saveUser(@RequestBody NewUserDTO newUser) throws Exception {
-        return usersService.save(newUser);
-    }
+
     @PutMapping("/{userId}")
     public User findAndUpdate(@PathVariable int userId, @RequestBody User newUser) {
         return this.usersService.findAndUpdate(userId, newUser);
