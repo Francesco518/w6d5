@@ -56,8 +56,8 @@ public class EventsService {
         }
         return eventsRepository.save(found);
     }
-    public List<Event> findByUser(int user_id) {
-        User user = usersService.findById(user_id);
+    public List<Event> findByUser(int userId) {
+        User user = usersService.findById(userId);
         return eventsRepository.findByUser(user);
     }
 }
