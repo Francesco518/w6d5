@@ -36,4 +36,8 @@ public class User {
         this.password = password;
         this.role = Role.USER;
     }
+    public User() {
+
+    }
+
 }

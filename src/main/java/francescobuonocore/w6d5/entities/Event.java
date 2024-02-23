@@ -6,8 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -28,7 +26,7 @@ public class Event {
     private String location;
 
     private int availableSeats;
-    @ManyToMany
-    @JoinTable(name = "event_participants", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> participants = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 }
