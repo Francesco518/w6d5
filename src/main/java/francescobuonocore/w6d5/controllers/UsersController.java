@@ -6,6 +6,7 @@ import francescobuonocore.w6d5.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,10 +28,12 @@ public class UsersController {
     }
 
     @PutMapping("/{userId}")
+    @PreAuthorize("hasAuthority('ORGANIZER')")
     public User findAndUpdate(@PathVariable int userId, @RequestBody User newUser) {
         return this.usersService.findAndUpdate(userId, newUser);
     }
     @DeleteMapping("/{userId}")
+    @PreAuthorize("hasAuthority('ORGANIZER')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void findAndDelete(@PathVariable int userId){
          this.usersService.findAndDelete(userId);

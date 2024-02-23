@@ -18,13 +18,7 @@ public class UsersService {
     @Autowired
     private UserRepository userRepository;
 
-    public User save(NewUserDTO payload) {
-        userRepository.findByEmail(payload.email()).ifPresent(user -> {
-            throw new BadRequestException("The email " + user.getEmail() + " has already been used");
-        });
-        User newUser = new User(payload.username(), payload.name(), payload.surname(), payload.email(), payload.password());
-        return userRepository.save(newUser);
-    }
+
 
    public User findById(long id) {
        return userRepository.findById(id).orElseThrow(() -> new NotFoundException(id));

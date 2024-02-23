@@ -42,7 +42,7 @@ public class JWTFilter extends OncePerRequestFilter {
         String id = jwtTools.extractFromToken(accessToken);
         User user = usersService.findById(Long.parseLong(id));
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(user, null);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 

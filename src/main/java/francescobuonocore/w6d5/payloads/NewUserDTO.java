@@ -13,7 +13,7 @@ public record NewUserDTO(
         String surname,
         @Email(message = "You need to insert a proper email")
         String email,
-        @JsonIgnore
+
         String password
 ) {
 
